@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--显示新闻列表内容-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="wrap_content"
+    android:background="@color/newsItemColor"
+    android:layout_height="wrap_content">
+    <!--显示新闻图片-->
+    <ImageView
+        android:id="@+id/news_item_pic"
+        android:layout_width="75px"
+        android:layout_height="60dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/new_dealfult"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:orientation="vertical">
+        <!--标题-->
+        <TextView
+            android:id="@+id/news_item_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:textSize="14sp"
+            android:text="12月26日华东理工大学黎野平教授来校讲学"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <!--日期-->
+            <TextView
+                android:id="@+id/news_item_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="2016/12/23/ 15:21:03"/>
+            <!--占位-->
+            <View android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+            <!--阅读次数-->
+            <TextView
+                android:id="@+id/news_item_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="阅读次数：322"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

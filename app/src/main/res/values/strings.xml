@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">nanhang</string>
+    <string name="tab_home">我的资料</string>
+    <string name="tab_doctor">我的课表</string>
+    <string name="tab_project">我的通知</string>
+    <string name="tab_person">扫一扫</string>
+    <string name="college_culture">校园文化</string>
+    <string name="college_hand">掌上校园</string>
+    <string name="college_forum">校园论坛</string>
+    <string name="college_transaction">校园事务</string>
+    <string name="college_wifi">一键上网</string>
+    <string name="college_mobile_office">移动办公</string>
+    <string name="college_card">一卡通</string>
+    <string name="college_service">校园服务</string>
+    <string name="userhead">头像</string>
+    <string name="menu_home">我的资料</string>
+    <string name="menu_modify_pwd">修改密码</string>
+    <string name="menu_abount">关于</string>
+    <string name="menu_qcode">我的二维码</string>
+</resources>

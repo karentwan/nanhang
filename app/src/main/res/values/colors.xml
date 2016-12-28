@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="tabColor">#344e60</color>
+    <color name="actionBarColor">#0077bb</color>
+    <color name="newsItemColor">#f6f5f5</color>
+    <color name="underLineColor">#292626</color>
+    <color name="logoBtnColor">#ff5959</color>
+    <color name="menuColor">#f6f5f5</color>
+    <color name="editeBackground">#FFFFFF</color>
+    <color name="editeStroke">#BDC7D8</color>
+    <color name="dialogLoginColor">#1e88ba</color>
+    <color name="backLayoutColor">#0077bb</color>
+    <color name="scoreTypefaceColor">#cccccc</color>
+    <color name="scoreTypefaceColor1">#666666</color>
+    <color name="scoreDivideColor">#aaa9a9</color>
+    <color name="scorePropertyColor">#43cdda</color>
+    <color name="scoreWayColor">#3b95d3</color>
+    <color name="scoreScoreColor">#ff5a3a</color>
+    <color name="white">#ffffff</color>
+</resources>

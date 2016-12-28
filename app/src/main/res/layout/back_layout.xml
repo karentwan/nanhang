@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--顶部返回的布局，用于被其他的布局加载-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:background="@color/backLayoutColor">
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="-10dp"
+        android:src="@drawable/back_arrow_off"/>
+    <TextView
+        android:layout_marginLeft="-10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="成绩查询"
+        android:textColor="@android:color/white"/>
+    <View
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="设置"
+        android:textColor="@android:color/white"
+        android:layout_marginRight="10dp"
+        android:visibility="invisible"/>
+
+</LinearLayout>

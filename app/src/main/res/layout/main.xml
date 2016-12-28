@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--侧滑菜单-->
+<cn.karent.nanhang.UI.SlideLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/slide"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--菜单布局-->
+    <include android:id="@+id/slide_menu" layout="@layout/main_menu_layout"/>
+    <!--内容布局-->
+    <include android:id="@+id/slide_content" layout="@layout/content_layout"/>
+</cn.karent.nanhang.UI.SlideLayout>

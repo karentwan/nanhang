@@ -15,6 +15,7 @@ import cn.karent.nanhang.UI.ProgressDialog;
 import cn.karent.nanhang.adapter.ScoreAdapter;
 import cn.karent.nanhang.adapter.WeekAdapter;
 import cn.karent.nanhang.model.Score;
+import cn.karent.nanhang.util.PopupWindowUtil;
 import cn.karent.nanhang.util.ScreenUtil;
 
 /**
@@ -112,7 +113,7 @@ public class ScoreActivity extends Activity implements View.OnClickListener{
      */
     private void initPopupWindow() {
         if( mWeekAdapter != null) {
-            mList.setAdapter(mWeekAdapter);
+//            mList.setAdapter(mWeekAdapter);
             return;
         }
         mWeekAdapter = new WeekAdapter(this, R.layout.check_week_layout);
@@ -128,7 +129,7 @@ public class ScoreActivity extends Activity implements View.OnClickListener{
             mWeekAdapter.add(s);
             year -= 1;
         }
-        mList.setAdapter(mWeekAdapter);
+//        mList.setAdapter(mWeekAdapter);
     }
 
     /**
@@ -138,26 +139,35 @@ public class ScoreActivity extends Activity implements View.OnClickListener{
     @Override
     public void onClick(View v) {
       if( mCheckWeekPopupWindow == null ) {
-            mCheckWeekPopupWindow = new PopupWindow(this);
-            View contentView = LayoutInflater.from(this).inflate(R.layout.checkweek_popup_layout, null);
-            mCheckWeekPopupWindow.setContentView(contentView);
-            mCheckWeekPopupWindow.setWidth(mPopupWidth);
-            mCheckWeekPopupWindow.setHeight(ViewGroup.LayoutParams.MATCH_PARENT);
-            mList = (ListView) contentView.findViewById(R.id.checkweek_list);
-            mCheckWeekPopupWindow.setBackgroundDrawable(null);
-            mCheckWeekPopupWindow.setFocusable(false);
-            mCheckWeekPopupWindow.setOutsideTouchable(true);
-            mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    mCurrentYear.setText(((TextView)view).getText());
-                    //让popupWindow消失
-                    mCheckWeekPopupWindow.dismiss();
-                    mCheckWeekPopupWindow = null;
-                }
-            });
+//            mCheckWeekPopupWindow = new PopupWindow(this);
+//            View contentView = LayoutInflater.from(this).inflate(R.layout.checkweek_popup_layout, null);
+//            mCheckWeekPopupWindow.setContentView(contentView);
+//            mCheckWeekPopupWindow.setWidth(mPopupWidth);
+//            mCheckWeekPopupWindow.setHeight(ViewGroup.LayoutParams.MATCH_PARENT);
+//            mList = (ListView) contentView.findViewById(R.id.checkweek_list);
+//            mCheckWeekPopupWindow.setBackgroundDrawable(null);
+//            mCheckWeekPopupWindow.setFocusable(false);
+//            mCheckWeekPopupWindow.setOutsideTouchable(true);
+//            mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                @Override
+//                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                    mCurrentYear.setText(((TextView)view).getText());
+//                    //让popupWindow消失
+//                    mCheckWeekPopupWindow.dismiss();
+//                    mCheckWeekPopupWindow = null;
+//                }
+//            });
             //去除背景
             initPopupWindow();
+            mCheckWeekPopupWindow = PopupWindowUtil.createPopupWindow(this, mPopupWidth, mWeekAdapter, new PopupWindowUtil.ItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                      mCurrentYear.setText(((TextView)view).getText());
+                      //让popupWindow消失
+                      mCheckWeekPopupWindow.dismiss();
+                      mCheckWeekPopupWindow = null;
+                }
+            });
             //计算要偏移的像素
             int offsetX = (ScreenUtil.getScreenWidth() - mPopupWidth) / 2;
             mCheckWeekPopupWindow.showAsDropDown(mCheckWeek, offsetX, 0);

@@ -2,6 +2,7 @@ package cn.karent.nanhang;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         headUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+Log.d("MainActivity", "侧滑菜单!");
                 slide.switchMenu();
             }
         });

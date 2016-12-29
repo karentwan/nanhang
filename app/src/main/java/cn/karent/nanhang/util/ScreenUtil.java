@@ -1,7 +1,6 @@
 package cn.karent.nanhang.util;
 
 import android.util.DisplayMetrics;
-import android.util.Log;
 
 /**
  * Created by wan on 2016/12/17.
@@ -15,7 +14,7 @@ public class ScreenUtil {
     public static float getDensity() {
         DisplayMetrics dm = MyApplication.getContext().getResources().getDisplayMetrics();
         float density = dm.density;
-        Log.d("density", density + "");
+//        Log.d("density", density + "");
         return density;
     }
 

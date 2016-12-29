@@ -42,9 +42,7 @@ public class WeekAdapter extends ArrayAdapter<String> {
         TextView t = (TextView)convertView.findViewById(R.id.check_week_week);
         String s = getItem(position);
         //如果当前要加载的周数等于TextView里面的周数，那么改变背景色
-Log.d("s:" + s, "mTextView.getText:" + mTextView.getText());
         if( s.equals(mTextView.getText())) {
-Log.d("WeekAdapter", "invoked!");
             t.setBackground(new ColorDrawable(0xffffffff));
             t.setTextColor(Color.rgb(0, 0, 0));
         } else {

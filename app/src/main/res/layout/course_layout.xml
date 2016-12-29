@@ -2,8 +2,7 @@
 <!--显示课表的布局文件-->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -11,7 +10,9 @@
         android:layout_centerInParent="true">
         <!--顶部返回栏-->
         <include layout="@layout/back_layout"/>
+        <!--显示当前年份并选择周数-->
         <LinearLayout
+            android:background="@android:color/white"
             android:layout_width="match_parent"
             android:layout_height="45dp">
             <TextView
@@ -29,6 +30,7 @@
                 android:layout_height="match_parent"
                 android:background="@color/scoreDivideColor"/>
             <RelativeLayout
+                android:id="@+id/course_relative_week"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <TextView
@@ -52,10 +54,28 @@
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:background="@drawable/back_line"/>
+        <!--星期几-->
+        <cn.karent.nanhang.UI.CourseDateUI
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"/>
+        <View android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:background="@drawable/banner_above"/>
         <!--接下来就是自定义图形绘制整个课表-->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+            <cn.karent.nanhang.UI.CourseUI
+                android:id="@+id/course_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </ScrollView>
     </LinearLayout>
     <!--消费事件，取消-->
     <View
+        android:id="@+id/course_cancelPopup"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"/>

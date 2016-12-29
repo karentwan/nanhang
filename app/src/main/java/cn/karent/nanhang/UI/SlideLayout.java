@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -102,6 +103,7 @@ public class SlideLayout extends RelativeLayout {
      * 显示菜单
      */
     public void showMenu() {
+Log.d("slideLayout", "显示菜单！");
         new SmoothScrollTack().execute(-mLeftEdge, mLeftParams.leftMargin);
     }
 

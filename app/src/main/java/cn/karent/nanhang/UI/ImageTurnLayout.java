@@ -141,7 +141,8 @@ public class ImageTurnLayout extends ViewGroup {
                 return true;
             case MotionEvent.ACTION_MOVE:
                 float x = event.getRawX();
-                int moveX = (int)(mOldX - x);
+                //拖动速度过快，故放慢十倍
+                int moveX = (int)(mOldX - x) / 10;
                 //滚动
                 if( getScrollX() + moveX >= mRightEdge ) {
                     scrollTo(mRightEdge, 0);

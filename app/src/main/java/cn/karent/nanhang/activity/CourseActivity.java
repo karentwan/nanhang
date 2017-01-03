@@ -11,6 +11,7 @@ import cn.karent.nanhang.R;
 import cn.karent.nanhang.UI.CourseUI;
 import cn.karent.nanhang.adapter.WeekAdapter;
 import cn.karent.nanhang.model.CourseItem;
+import cn.karent.nanhang.util.ActivityCollector;
 import cn.karent.nanhang.util.PopupWindowUtil;
 import cn.karent.nanhang.util.ScreenUtil;
 
@@ -51,6 +52,8 @@ public class CourseActivity extends Activity implements View.OnClickListener{
 
     private CourseUI mCourseUI;
 
+    private TextView mBackPrevious;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,6 +81,15 @@ public class CourseActivity extends Activity implements View.OnClickListener{
         initCourseDetail();
         mCourseUI = (CourseUI) findViewById(R.id.course_detail);
         mCourseUI.setChildren(mCourseDetail, 12, 7);
+        mBackPrevious = (TextView)findViewById(R.id.back_previous);
+        mBackPrevious.setText("课程表");
+        ActivityCollector.addActivity(this);
+        mBackPrevious.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityCollector.finishCurrent();
+            }
+        });
     }
 
     /**
@@ -212,4 +224,9 @@ public class CourseActivity extends Activity implements View.OnClickListener{
 
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ActivityCollector.removeActicity(this);
+    }
 }

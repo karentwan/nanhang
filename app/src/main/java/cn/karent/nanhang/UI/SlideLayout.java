@@ -5,10 +5,8 @@ import android.os.AsyncTask;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
-
 import cn.karent.nanhang.R;
 import cn.karent.nanhang.util.ScreenUtil;
 
@@ -172,7 +170,7 @@ Log.d("slideLayout", "显示菜单！");
                 }
                 publishProgress(leftMargin);
                 try {
-                    Thread.sleep(5);
+                    Thread.sleep(3);
                 } catch( InterruptedException e) {
                     e.printStackTrace();
                 }

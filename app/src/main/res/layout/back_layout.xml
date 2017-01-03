@@ -10,6 +10,7 @@
         android:layout_marginLeft="-10dp"
         android:src="@drawable/back_arrow_off"/>
     <TextView
+        android:id="@+id/back_previous"
         android:layout_marginLeft="-10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

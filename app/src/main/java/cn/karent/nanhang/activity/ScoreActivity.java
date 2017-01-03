@@ -2,10 +2,9 @@ package cn.karent.nanhang.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.PopupWindow;
@@ -15,6 +14,7 @@ import cn.karent.nanhang.UI.ProgressDialog;
 import cn.karent.nanhang.adapter.ScoreAdapter;
 import cn.karent.nanhang.adapter.WeekAdapter;
 import cn.karent.nanhang.model.Score;
+import cn.karent.nanhang.util.ActivityCollector;
 import cn.karent.nanhang.util.PopupWindowUtil;
 import cn.karent.nanhang.util.ScreenUtil;
 
@@ -60,6 +60,10 @@ public class ScoreActivity extends Activity implements View.OnClickListener{
      */
     private WeekAdapter mWeekAdapter;
 
+    private TextView mBackPrevous;
+
+    private ProgressDialog mProgress;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,8 +88,22 @@ public class ScoreActivity extends Activity implements View.OnClickListener{
         });
         mCurrentYear = (TextView)findViewById(R.id.score_week);
         //显示加载对话框
-        new ProgressDialog.Builder(this).create().show();
+//        new ProgressDialog.Builder(this).create().show();
+        mProgress = new ProgressDialog.Builder(this).create();
+        mProgress.show();
+        ActivityCollector.addActivity(this);
+        mBackPrevous = (TextView) findViewById(R.id.back_previous);
+
+        mBackPrevous.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityCollector.finishCurrent();
+            }
+        });
+Log.d("ScoreActivity", "onCreate!");
     }
+
+
 
     /**
      * 填充测试数据
@@ -113,7 +131,6 @@ public class ScoreActivity extends Activity implements View.OnClickListener{
      */
     private void initPopupWindow() {
         if( mWeekAdapter != null) {
-//            mList.setAdapter(mWeekAdapter);
             return;
         }
         mWeekAdapter = new WeekAdapter(this, R.layout.check_week_layout);
@@ -129,7 +146,6 @@ public class ScoreActivity extends Activity implements View.OnClickListener{
             mWeekAdapter.add(s);
             year -= 1;
         }
-//        mList.setAdapter(mWeekAdapter);
     }
 
     /**
@@ -139,24 +155,6 @@ public class ScoreActivity extends Activity implements View.OnClickListener{
     @Override
     public void onClick(View v) {
       if( mCheckWeekPopupWindow == null ) {
-//            mCheckWeekPopupWindow = new PopupWindow(this);
-//            View contentView = LayoutInflater.from(this).inflate(R.layout.checkweek_popup_layout, null);
-//            mCheckWeekPopupWindow.setContentView(contentView);
-//            mCheckWeekPopupWindow.setWidth(mPopupWidth);
-//            mCheckWeekPopupWindow.setHeight(ViewGroup.LayoutParams.MATCH_PARENT);
-//            mList = (ListView) contentView.findViewById(R.id.checkweek_list);
-//            mCheckWeekPopupWindow.setBackgroundDrawable(null);
-//            mCheckWeekPopupWindow.setFocusable(false);
-//            mCheckWeekPopupWindow.setOutsideTouchable(true);
-//            mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                @Override
-//                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                    mCurrentYear.setText(((TextView)view).getText());
-//                    //让popupWindow消失
-//                    mCheckWeekPopupWindow.dismiss();
-//                    mCheckWeekPopupWindow = null;
-//                }
-//            });
             //去除背景
             initPopupWindow();
             mCheckWeekPopupWindow = PopupWindowUtil.createPopupWindow(this, mPopupWidth, mWeekAdapter, new PopupWindowUtil.ItemClickListener() {
@@ -174,5 +172,11 @@ public class ScoreActivity extends Activity implements View.OnClickListener{
         }
     }
 
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+Log.d("ScoreActivity", "onDestroy!");
+        mProgress.dismiss();
+        ActivityCollector.removeActicity(this);
+    }
 }

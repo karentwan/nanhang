@@ -15,6 +15,8 @@ import cn.karent.nanhang.R;
  */
 public class ProgressDialog extends Dialog {
 
+    private ProgressView mProgressView;
+
     private ProgressDialog(Context context) {
         super(context);
     }
@@ -31,10 +33,10 @@ public class ProgressDialog extends Dialog {
             mContext = context;
         }
 
-
         public ProgressDialog create() {
             ProgressDialog p = new ProgressDialog(mContext, R.style.LoginDialogTheme);
             View v = LayoutInflater.from(mContext).inflate(R.layout.load_dialog_layout, null);
+            p.mProgressView = (ProgressView) v.findViewById(R.id.load_dialog_progressView);
             p.addContentView(v, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
             Window window  = p.getWindow();
             WindowManager.LayoutParams lp = window.getAttributes();
@@ -45,5 +47,9 @@ public class ProgressDialog extends Dialog {
         }
     }
 
-
+    @Override
+    public void dismiss() {
+        super.dismiss();
+        mProgressView.setLoop(false);
+    }
 }

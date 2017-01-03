@@ -9,6 +9,7 @@ import android.graphics.Matrix;
 import android.graphics.PorterDuff;
 import android.os.AsyncTask;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import cn.karent.nanhang.R;
 
@@ -38,6 +39,10 @@ public class ProgressView extends View {
      */
     private int mHeight;
 
+    private LoopAnimation mLoopAnimation;
+
+    private boolean mLoop = true;
+
     public ProgressView(Context context) {
         super(context);
     }
@@ -50,7 +55,8 @@ public class ProgressView extends View {
         mWidth = mBitmap.getWidth();
         mHeight = mBitmap.getHeight();
         //执行循环
-        new LoopAnimation().execute();
+        mLoopAnimation = new LoopAnimation();
+        mLoopAnimation.execute();
     }
 
     @Override
@@ -60,6 +66,7 @@ public class ProgressView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
+//        canvas.scale(mWidth / 2, mHeight / 2);
         canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
         mMatrix.preRotate(6, mWidth / 2, mHeight / 2);
         canvas.drawBitmap(mBitmap, mMatrix, null);
@@ -79,7 +86,7 @@ public class ProgressView extends View {
         @Override
         protected Void doInBackground(Void... params) {
             int rotate = 0;
-            while( true ) {
+            while( mLoop ) {
                 try {
                     Thread.sleep(100);
                 } catch(InterruptedException e) {
@@ -87,7 +94,16 @@ public class ProgressView extends View {
                 }
                 publishProgress();
             }
+            return null;
         }
+    }
+
+    /**
+     * 停止循环
+     * @param loop
+     */
+    public void setLoop(boolean loop) {
+        mLoop = loop;
     }
 
 }

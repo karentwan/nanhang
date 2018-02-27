@@ -9,7 +9,6 @@ import android.graphics.Matrix;
 import android.graphics.PorterDuff;
 import android.os.AsyncTask;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import cn.karent.nanhang.R;
 
@@ -42,6 +41,10 @@ public class ProgressView extends View {
     private LoopAnimation mLoopAnimation;
 
     private boolean mLoop = true;
+    /**
+     * 旋转的角度
+     */
+    private int mRotateDelta = 0;
 
     public ProgressView(Context context) {
         super(context);
@@ -66,12 +69,12 @@ public class ProgressView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-//        canvas.scale(mWidth / 2, mHeight / 2);
         canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
-        mMatrix.preRotate(6, mWidth / 2, mHeight / 2);
+        mMatrix.setScale(0.5f, 0.5f);
+        mMatrix.preTranslate(mWidth / 2, mHeight);
+        mMatrix.preRotate((mRotateDelta ++ ) * 6, mWidth / 2, mHeight / 2);
         canvas.drawBitmap(mBitmap, mMatrix, null);
     }
-
     /**
      * 循环动画，不停的触发旋转动画
      */
@@ -85,10 +88,9 @@ public class ProgressView extends View {
 
         @Override
         protected Void doInBackground(Void... params) {
-            int rotate = 0;
             while( mLoop ) {
                 try {
-                    Thread.sleep(100);
+                    Thread.sleep(50);
                 } catch(InterruptedException e) {
                     e.printStackTrace();
                 }

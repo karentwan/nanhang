@@ -20,4 +20,5 @@
     <color name="scoreWayColor">#3b95d3</color>
     <color name="scoreScoreColor">#ff5a3a</color>
     <color name="white">#ffffff</color>
+    <color name="progressColor">#0000</color>
 </resources>

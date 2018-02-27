@@ -40,6 +40,7 @@ public class ProgressDialog extends Dialog {
             p.addContentView(v, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
             Window window  = p.getWindow();
             WindowManager.LayoutParams lp = window.getAttributes();
+
             lp.width = 700;
             lp.height = 700;
             window.setAttributes(lp);

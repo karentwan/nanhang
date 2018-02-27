@@ -5,12 +5,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-
 import cn.karent.nanhang.UI.BottomControlUI;
 import cn.karent.nanhang.UI.MenuUI;
 import cn.karent.nanhang.UI.NewsUI;
 import cn.karent.nanhang.UI.SlideLayout;
-import cn.karent.nanhang.activity.ScoreActivity;
 
 public class MainActivity extends AppCompatActivity {
     /**

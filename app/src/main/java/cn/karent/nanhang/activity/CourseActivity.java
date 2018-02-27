@@ -221,6 +221,9 @@ public class CourseActivity extends Activity implements View.OnClickListener{
         mCourseDetail[5][5] = new CourseItem();
         mCourseDetail[5][5].setName("数据结构与算法综合楼南303");
 
+        mCourseDetail[0][6] = new CourseItem();
+        mCourseDetail[0][6].setName("wan");
+
 
     }
 

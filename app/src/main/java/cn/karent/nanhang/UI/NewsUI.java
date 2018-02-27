@@ -52,6 +52,7 @@ Log.d("mNewsAdapter", mNewsAdapter.toString());
         mNewsAdapter.add(n);
         mNewsAdapter.add(n);
         mNewsAdapter.add(n);
+
     }
 
 
